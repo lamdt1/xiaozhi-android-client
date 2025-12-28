@@ -4,58 +4,58 @@ import { getGuideSideBarItems } from './guide'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ANDROID-XIAOZHI",
-  description: "android-xiaozhi 是一个基于Flutter的跨平台小智客户端，支持iOS、Android、Web等多平台",
+  description: "android-xiaozhi is a Flutter-based cross-platform Xiaozhi client, supporting iOS, Android, Web, and more.",
   base: '/xiaozhi-android-client/',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '主页', link: '/' },
-      { text: '指南', link: '/guide/00_文档目录' },
-      { text: '相关生态', link: '/ecosystem/' },
-      { text: '贡献指南', link: '/contributing' },
-      { text: '特殊贡献者', link: '/contributors' },
-      { text: '赞助', link: '/sponsors/' }
+      { text: 'Home', link: '/' },
+      { text: 'Guide', link: '/guide/00_documentation_index' },
+      { text: 'Ecosystem', link: '/ecosystem/' },
+      { text: 'Contributing', link: '/contributing' },
+      { text: 'Contributors', link: '/contributors' },
+      { text: 'Sponsors', link: '/sponsors/' }
     ],
 
     sidebar: {
       '/guide/': [
         {
-          text: '指南',
-          // 默认展开
+          text: 'Guide',
+          // Expanded by default
           collapsed: false,
           items: getGuideSideBarItems(),
         }
       ],
       '/ecosystem/': [
         {
-          text: '生态系统概览',
+          text: 'Ecosystem Overview',
           link: '/ecosystem/'
         },
         {
-          text: '相关项目',
+          text: 'Related Projects',
           collapsed: false,
           items: [
-            { text: '小智Python端', link: '/ecosystem/projects/py-xiaozhi/' },
+            { text: 'Xiaozhi Python Client', link: '/ecosystem/projects/py-xiaozhi/' },
             { text: 'xiaozhi-esp32-server', link: '/ecosystem/projects/xiaozhi-esp32-server/' }
           ]
         },
         // {
-        //   text: '资源和支持',
+        //   text: 'Resources and Support',
         //   collapsed: true,
         //   items: [
-        //     { text: '官方扩展和插件', link: '/ecosystem/resources/official-extensions/' },
-        //     { text: '社区贡献', link: '/ecosystem/resources/community-contributions/' },
-        //     { text: '兼容设备', link: '/ecosystem/resources/compatible-devices/' }
+        //     { text: 'Official Extensions & Plugins', link: '/ecosystem/resources/official-extensions/' },
+        //     { text: 'Community Contributions', link: '/ecosystem/resources/community-contributions/' },
+        //     { text: 'Compatible Devices', link: '/ecosystem/resources/compatible-devices/' }
         //   ]
         // }
       ],
-      // 赞助页面不显示侧边栏
+      // No sidebar for sponsors page
       '/sponsors/': [],
-      // 贡献指南页面不显示侧边栏
+      // No sidebar for contributing guide
       '/contributing': [],
-      // 贡献者名单页面不显示侧边栏
+      // No sidebar for contributors list
       '/contributors': [],
-      // 系统架构页面不显示侧边栏
+      // No sidebar for system architecture
       '/architecture/': []
     },
 

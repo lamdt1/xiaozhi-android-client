@@ -1,29 +1,29 @@
 ---
-title: 贡献者名单
-description: 感谢所有为项目做出贡献的开源人员
+title: Contributors List
+description: Thanks to all open-source personnel who contributed to the project
 sidebar: false
 outline: deep
 ---
 
 <div class="contributors-page">
 
-# 贡献者名单
+# Contributors List
 
 <div class="header-content">
-  <h2>感谢以下开源人员在移动端项目提供的帮助 ❤️</h2>
-  <p>排名不分前后</p>
+  <h2>Thanks to the following personnel for their help in the mobile project ❤️</h2>
+  <p>Ranking in no particular order</p>
 </div>
 
 <div class="contributors-list">
 
   <div class="contributor-card">
     <div class="contributor-name">huangjunsen0406</div>
-    <div class="contributor-link"><a href="https://github.com/huangjunsen0406" target="_blank">GitHub 主页</a></div>
+    <div class="contributor-link"><a href="https://github.com/huangjunsen0406" target="_blank">GitHub Profile</a></div>
   </div>
   
   <div class="contributor-card">
     <div class="contributor-name">xinnan-tech</div>
-    <div class="contributor-link"><a href="https://github.com/xinnan-tech" target="_blank">GitHub 主页</a></div>
+    <div class="contributor-link"><a href="https://github.com/xinnan-tech" target="_blank">GitHub Profile</a></div>
   </div>
 
 </div>
@@ -98,4 +98,4 @@ outline: deep
     grid-template-columns: 1fr;
   }
 }
-</style> 
+</style>

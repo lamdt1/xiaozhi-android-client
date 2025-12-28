@@ -18,86 +18,86 @@ import 'dart:ui';
 import 'package:ai_assistant/utils/audio_util.dart';
 import 'package:flutter_displaymode/flutter_displaymode.dart';
 
-// 是否启用调试工具
+// Whether to enable debug tools
 const bool enableDebugTools = true;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 设置全局沉浸式导航栏
+  // Set global immersive navigation bar
   await _setupSystemUI();
 
-  // 设置状态栏颜色变化监听器，确保状态栏样式始终如一
+  // Set status bar color change listener to ensure consistent status bar style
   SystemChannels.lifecycle.setMessageHandler((msg) async {
     if (msg == AppLifecycleState.resumed.toString()) {
-      // 应用回到前台时重新应用系统UI设置
+      // Re-apply system UI settings when app returns to foreground
       await _setupSystemUI();
     }
     return null;
   });
 
-  // 设置高性能渲染
+  // Set high-performance rendering
   if (Platform.isAndroid || Platform.isIOS) {
-    // 启用SkSL预热，提高首次渲染性能
+    // Enable SkSL warm-up to improve first-render performance
     await Future.delayed(const Duration(milliseconds: 50));
     PaintingBinding.instance.imageCache.maximumSize = 1000;
-    // 增加图像缓存容量
+    // Increase image cache capacity
     PaintingBinding.instance.imageCache.maximumSizeBytes =
         100 * 1024 * 1024; // 100 MB
   }
 
-  // 请求录音和存储权限
+  // Request recording and storage permissions
   await [
     Permission.microphone,
     Permission.storage,
     if (Platform.isAndroid) Permission.bluetoothConnect,
   ].request();
 
-  // 添加中文本地化支持
+  // Add localization support (Defaulting to English)
   timeago.setLocaleMessages('zh', timeago.ZhMessages());
-  timeago.setDefaultLocale('zh');
+  timeago.setDefaultLocale('en');
 
-  // 在Android上设置高刷新率
+  // Set high refresh rate on Android
   if (Platform.isAndroid) {
     try {
-      // 获取所有支持的显示模式
+      // Get all supported display modes
       final modes = await FlutterDisplayMode.supported;
-      print('支持的显示模式: ${modes.length}');
-      modes.forEach((mode) => print('模式: $mode'));
+      print('Supported display modes: ${modes.length}');
+      modes.forEach((mode) => print('Mode: $mode'));
 
-      // 获取当前活跃的模式
+      // Get currently active mode
       final current = await FlutterDisplayMode.active;
-      print('当前模式: $current');
+      print('Current mode: $current');
 
-      // 设置为高刷新率模式
+      // Set to high refresh rate mode
       await FlutterDisplayMode.setHighRefreshRate();
 
-      // 确认设置成功
+      // Confirm settings succeeded
       final afterSet = await FlutterDisplayMode.active;
-      print('设置后模式: $afterSet');
+      print('Mode after setting: $afterSet');
     } catch (e) {
-      print('设置高刷新率失败: $e');
+      print('Failed to set high refresh rate: $e');
     }
   }
 
-  // 初始化Opus库
+  // Initialize Opus library
   try {
     initOpus(await opus_flutter.load());
-    print('Opus初始化成功: ${getOpusVersion()}');
+    print('Opus initialized successfully: ${getOpusVersion()}');
   } catch (e) {
-    print('Opus初始化失败: $e');
+    print('Opus initialization failed: $e');
   }
 
-  // 初始化录音和播放器
+  // Initialize recorder and player
   try {
     await AudioUtil.initRecorder();
     await AudioUtil.initPlayer();
-    print('音频系统初始化成功');
+    print('Audio system initialized successfully');
   } catch (e) {
-    print('音频系统初始化失败: $e');
+    print('Audio system initialization failed: $e');
   }
 
-  // 初始化配置管理
+  // Initialize configuration management
   final configProvider = ConfigProvider();
 
   runApp(
@@ -112,9 +112,9 @@ void main() async {
   );
 }
 
-// 设置系统UI沉浸式效果
+// Setup immersive system UI effects
 Future<void> _setupSystemUI() async {
-  // 设置状态栏和导航栏透明
+  // Set status bar and navigation bar to transparent
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -127,10 +127,10 @@ Future<void> _setupSystemUI() async {
   );
 
   if (Platform.isAndroid) {
-    // 启用边缘到边缘显示模式，实现真正的全面屏效果
+    // Enable edge-to-edge display mode for true full-screen effect
     await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   } else if (Platform.isIOS) {
-    // iOS上设置为全屏显示但保留状态栏
+    // Set to full screen display while retaining the status bar on iOS
     await SystemChrome.setEnabledSystemUIMode(
       SystemUiMode.manual,
       overlays: [SystemUiOverlay.top],
@@ -153,16 +153,16 @@ class MyApp extends StatelessWidget {
       themeMode: themeProvider.themeMode,
       home: const HomeScreen(),
       routes: {
-        // 添加测试界面路由
+        // Add test screen route
         '/test': (context) => const TestScreen(),
       },
-      // 添加平滑滚动设置
+      // Add smooth scroll settings
       scrollBehavior: const MaterialScrollBehavior().copyWith(
-        // 启用物理滚动
+        // Enable physical scrolling
         physics: const BouncingScrollPhysics(
           parent: AlwaysScrollableScrollPhysics(),
         ),
-        // 确保所有平台都有滚动条和弹性效果
+        // Ensure all platforms have scrollbars and bounce effects
         dragDevices: {
           PointerDeviceKind.touch,
           PointerDeviceKind.mouse,

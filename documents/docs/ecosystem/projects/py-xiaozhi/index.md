@@ -1,138 +1,138 @@
 ---
-title: 小智Python端
-description: 使用Python实现的小智语音客户端，旨在通过代码学习和在没有硬件条件下体验AI小智的语音功能
+title: Xiaozhi Python Client
+description: A Python implementation of the Xiaozhi voice client, designed for code learning and experiencing AI Xiaozhi's voice features without hardware.
 ---
 
-# 小智Python客户端
+# Xiaozhi Python Client
 
 <div class="project-header">
   <div class="project-badges">
-    <span class="badge platform">跨平台</span>
+    <span class="badge platform">Cross-platform</span>
     <span class="badge language">Python</span>
-    <span class="badge status">稳定版本</span>
+    <span class="badge status">Stable Version</span>
   </div>
 </div>
 
-## 项目简介
+## Project Introduction
 
-py-xiaozhi 是一个使用 Python 实现的小智语音客户端，旨在通过代码学习和在没有硬件条件下体验 AI 小智的语音功能。支持语音输入与识别，实现智能人机交互，提供自然流畅的对话体验。
+py-xiaozhi is a Python-based implementation of the Xiaozhi voice client. It aims to provide a platform for code learning and a way to experience AI Xiaozhi's voice functions without needing specific hardware. It supports voice input and recognition, enabling intelligent human-computer interaction and a natural, fluid conversation experience.
 
 <div class="app-showcase">
   <div class="showcase-description">
-    <p>py-xiaozhi 提供了跨平台的小智语音交互体验，不仅支持GUI界面，还提供命令行模式，适用于各种环境。通过简单易用的接口和丰富的功能，让用户能够方便地与AI进行语音和文字交流。</p>
+    <p>py-xiaozhi provides a cross-platform Xiaozhi voice interaction experience. It supports both a GUI interface and a command-line mode, making it suitable for various environments. With simple interfaces and rich features, users can easily communicate with the AI via voice and text.</p>
   </div>
 </div>
 
-## 核心功能
+## Core Features
 
 <div class="features-grid">
   <div class="feature-card">
     <div class="feature-icon">🗣️</div>
-    <h3>AI语音交互</h3>
-    <p>支持语音输入与识别，实现智能人机交互，提供自然流畅的对话体验</p>
+    <h3>AI Voice Interaction</h3>
+    <p>Supports voice input and recognition, providing intelligent human-computer interaction and a natural dialogue flow.</p>
   </div>
   
   <div class="feature-card">
     <div class="feature-icon">👁️</div>
-    <h3>视觉多模态</h3>
-    <p>支持图像识别和处理，提供多模态交互能力，理解图像内容</p>
+    <h3>Visual Multimodality</h3>
+    <p>Supports image recognition and processing, providing multimodal interaction by understanding visual content.</p>
   </div>
   
   <div class="feature-card">
     <div class="feature-icon">🏠</div>
-    <h3>IoT 设备集成</h3>
-    <p>支持智能家居设备控制，实现更多物联网功能，打造智能家居生态</p>
+    <h3>IoT Device Integration</h3>
+    <p>Supports smart home device control, expanding IoT functions and building a smart home ecosystem.</p>
   </div>
   
   <div class="feature-card">
     <div class="feature-icon">🎵</div>
-    <h3>联网音乐播放</h3>
-    <p>基于pygame实现的高性能音乐播放器，支持歌词显示和本地缓存</p>
+    <h3>Internet Music Playback</h3>
+    <p>A high-performance music player based on pygame, supporting lyrics display and local caching.</p>
   </div>
   
   <div class="feature-card">
     <div class="feature-icon">🔊</div>
-    <h3>语音唤醒</h3>
-    <p>支持唤醒词激活交互，免去手动操作的烦恼（默认关闭需要手动开启）</p>
+    <h3>Voice Wake-up</h3>
+    <p>Supports wake-word activation for hands-free interaction (disabled by default, requires manual activation).</p>
   </div>
   
   <div class="feature-card">
     <div class="feature-icon">💬</div>
-    <h3>自动对话模式</h3>
-    <p>实现连续对话体验，提升用户交互流畅度</p>
+    <h3>Automatic Dialogue Mode</h3>
+    <p>Implements a continuous conversation experience, enhancing the fluidity of user interaction.</p>
   </div>
 </div>
 
-## 功能亮点
+## Feature Highlights
 
-### 图形化界面与命令行模式
+### Graphical UI & Command-Line Mode
 
 <div class="feature-highlight">
   <div class="highlight-content">
-    <h3>多种运行模式</h3>
+    <h3>Multiple Operating Modes</h3>
     <ul>
-      <li>提供直观易用的 GUI，支持小智表情与文本显示</li>
-      <li>支持 CLI 运行，适用于嵌入式设备或无 GUI 环境</li>
-      <li>跨平台支持，兼容 Windows 10+、macOS 10.15+ 和 Linux 系统</li>
-      <li>统一的音量控制接口，适应不同环境需求</li>
+      <li>Provides an intuitive GUI supporting Xiaozhi expressions and text display.</li>
+      <li>Supports CLI mode, suitable for embedded devices or environments without a GUI.</li>
+      <li>Cross-platform support, compatible with Windows 10+, macOS 10.15+, and Linux systems.</li>
+      <li>Unified volume control interface adapted to different environmental needs.</li>
     </ul>
   </div>
 </div>
 
-### 安全稳定的连接
+### Secure and Stable Connection
 
 <div class="feature-highlight reverse">
   <div class="highlight-content">
-    <h3>优化的连接体验</h3>
+    <h3>Optimized Connection Experience</h3>
     <ul>
-      <li>支持 WSS 协议，保障音频数据的安全性</li>
-      <li>首次使用时，程序自动复制验证码并打开浏览器</li>
-      <li>自动获取 MAC 地址，避免地址冲突</li>
-      <li>断线重连功能，保证连接稳定性</li>
-      <li>跨平台兼容性优化</li>
+      <li>Supports the WSS protocol to ensure the security of audio data.</li>
+      <li>On the first run, the program automatically copies the verification code and opens the browser.</li>
+      <li>Automatically retrieves hardware MAC address to avoid conflicts.</li>
+      <li>Automatic reconnection feature ensures connection stability.</li>
+      <li>Optimized for cross-platform compatibility.</li>
     </ul>
   </div>
 </div>
 
-## 系统要求
+## System Requirements
 
 - **Python**: 3.8+
-- **操作系统**: Windows 10+, macOS 10.15+, Linux
-- **依赖**: PyAudio, PyQt5, pygame, websocket-client等
+- **OS**: Windows 10+, macOS 10.15+, Linux
+- **Dependencies**: PyAudio, PyQt5, pygame, websocket-client, etc.
 
-## 安装与使用
+## Installation and Usage
 
-### 安装方法
+### Installation Method
 
-1. 克隆项目仓库:
+1. Clone the project repository:
 ```bash
 git clone https://github.com/huangjunsen0406/py-xiaozhi.git
 ```
 
-2. 安装依赖:
+2. Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
 
-3. 运行应用:
+3. Run the application:
 ```bash
 python main.py
 ```
 
-## 配置说明
+## Configuration Description
 
-客户端支持多种配置选项:
+The client supports several configuration options:
 
-- 语音输入/输出设备选择
-- 音量控制
-- 唤醒词设置
-- 服务器连接设置
-- GUI/CLI模式切换
+- Selection of voice input/output devices
+- Volume control
+- Wake-word settings
+- Server connection settings
+- GUI/CLI mode switching
 
-## 相关链接
+## Related Links
 
-- [项目GitHub仓库](https://github.com/huangjunsen0406/py-xiaozhi)
-- [问题反馈](https://github.com/huangjunsen0406/py-xiaozhi/issues)
+- [Project GitHub Repository](https://github.com/huangjunsen0406/py-xiaozhi)
+- [Issue Feedback](https://github.com/huangjunsen0406/py-xiaozhi/issues)
 
 <style>
 .project-header {
@@ -250,4 +250,4 @@ python main.py
     grid-template-columns: 1fr;
   }
 }
-</style> 
+</style>

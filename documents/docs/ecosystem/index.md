@@ -1,45 +1,45 @@
 ---
-title: 相关生态
-description: android-xiaozhi项目相关的生态系统和扩展项目
+title: Related Ecosystem
+description: Ecosystem and extension projects related to the android-xiaozhi project
 outline: deep
 ---
 
 <div class="ecosystem-page">
 
-# 相关生态
+# Related Ecosystem
 
 <div class="header-content">
-  <h2>android-xiaozhi项目生态系统 🌱</h2>
-  <p>探索围绕android-xiaozhi构建的相关项目和扩展</p>
+  <h2>android-xiaozhi Project Ecosystem 🌱</h2>
+  <p>Explore projects and extensions built around android-xiaozhi</p>
 </div>
 
-## 生态概览
+## Ecosystem Overview
 
-本页面将收集和展示android-xiaozhi项目相关的生态系统项目，包括：
+This page collects and displays projects related to the android-xiaozhi ecosystem, including:
 
-- 官方扩展和插件
-- 社区贡献的项目
-- 兼容的硬件设备
-- 第三方集成方案
-- 示例项目和案例分析
+- Official extensions and plugins
+- Community-contributed projects
+- Compatible hardware devices
+- Third-party integration solutions
+- Example projects and case studies
 
-## 即将推出
+## Coming Soon
 
-我们计划收集和整理以下内容：
+We plan to collect and organize the following:
 
-- 各种设备上的安装和运行指南
-- 与智能家居系统的集成方案
-- 定制语音指令和技能的开发教程
-- 基于android-xiaozhi构建的项目案例
-- 社区贡献的扩展功能
+- Installation and running guides for various devices
+- Integration solutions with smart home systems
+- Development tutorials for custom voice commands and skills
+- Project cases built on top of android-xiaozhi
+- Community-contributed extended features
 
-## 参与贡献
+## Get Involved
 
-如果您有相关的项目或扩展想要分享，欢迎通过以下方式参与贡献：
+If you have related projects or extensions you want to share, feel free to contribute in the following ways:
 
-1. 在GitHub上提交Pull Request，添加您的项目
-2. 在Issues中建议您希望看到的集成或扩展
-3. 分享您使用android-xiaozhi的经验和案例
+1. Submit a Pull Request on GitHub to add your project.
+2. Suggest integrations or extensions you'd like to see in Issues.
+3. Share your experiences and case studies using android-xiaozhi.
 
 </div>
 
@@ -127,4 +127,4 @@ outline: deep
   background-color: rgba(var(--vp-c-brand-rgb), 0.2);
   transform: translateX(5px);
 }
-</style> 
+</style>

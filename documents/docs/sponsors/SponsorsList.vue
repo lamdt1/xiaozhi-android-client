@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import sponsorsData from './data.js'
-import { info } from 'console'
 
 const sponsors = ref([])
 const isLoading = ref(true)
@@ -9,12 +8,12 @@ const error = ref(null)
 
 onMounted(() => {
   try {
-    // 直接使用导入的数据而不是通过fetch请求
+    // Data imported directly instead of via fetch
     sponsors.value = sponsorsData.sponsors
     isLoading.value = false
   } catch (err) {
-    console.error('加载赞助者数据失败:', err)
-    error.value = '加载赞助者数据失败，请刷新页面重试'
+    console.error('Failed to load sponsor data:', err)
+    error.value = 'Failed to load sponsor data, please refresh the page and try again.'
     isLoading.value = false
   }
 })
@@ -22,15 +21,15 @@ onMounted(() => {
 
 <template>
   <div class="sponsors-container">
-    <!-- 头部信息 -->
+    <!-- Header Info -->
     <div class="sponsor-header">
-      <p>无论是接口资源、设备兼容测试还是资金支持，每一份帮助都让项目更加完善</p>
-      <p>由于事物繁忙，之前有参与过建设的，都可以与我取得联系，在此添加各位的信息</p>
+      <p>Whether it's API resources, device compatibility testing, or financial support, every bit of help makes the project better.</p>
+      <p>Due to a busy schedule, anyone who has previously participated in the construction can contact me to have their information added here.</p>
     </div>
 
-    <!-- 赞助者列表 -->
+    <!-- Sponsor List -->
     <div v-if="isLoading" class="loading">
-      <p>正在加载赞助者信息...</p>
+      <p>Loading sponsor information...</p>
     </div>
     
     <div v-else-if="error" class="error">
@@ -40,7 +39,7 @@ onMounted(() => {
     <div v-else class="sponsors-grid">
       <div v-for="sponsor in sponsors" :key="sponsor.name" class="sponsor-item">
         <div class="sponsor-avatar">
-          <img :src="sponsor.image" :alt="`${sponsor.name} 头像`" loading="lazy">
+          <img :src="sponsor.image" :alt="`${sponsor.name} avatar`" loading="lazy">
         </div>
         <div class="sponsor-name">
           <a v-if="sponsor.url" :href="sponsor.url" target="_blank" rel="noopener noreferrer">
@@ -129,4 +128,4 @@ onMounted(() => {
     height: 70px;
   }
 }
-</style> 
+</style>
