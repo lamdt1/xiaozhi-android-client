@@ -36,14 +36,13 @@ void main() async {
     return null;
   });
 
-  // Set high-performance rendering
+  // Set high-performance rendering for low-memory devices
   if (Platform.isAndroid || Platform.isIOS) {
     // Enable SkSL warm-up to improve first-render performance
     await Future.delayed(const Duration(milliseconds: 50));
-    PaintingBinding.instance.imageCache.maximumSize = 1000;
-    // Increase image cache capacity
-    PaintingBinding.instance.imageCache.maximumSizeBytes =
-        100 * 1024 * 1024; // 100 MB
+    // Reduced cache for 1GB RAM devices
+    PaintingBinding.instance.imageCache.maximumSize = 100;
+    PaintingBinding.instance.imageCache.maximumSizeBytes = 20 * 1024 * 1024; // 20 MB
   }
 
   // Request recording and storage permissions
@@ -145,31 +144,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
 
-    return MaterialApp(
-      title: 'AI-LHHT',
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      themeMode: themeProvider.themeMode,
-      home: const HomeScreen(),
-      routes: {
-        // Add test screen route
-        '/test': (context) => const TestScreen(),
+    return Consumer<ConfigProvider>(
+      builder: (context, configProvider, child) {
+        return MaterialApp(
+          title: configProvider.appTitle,
+          debugShowCheckedModeBanner: false,
+          theme: AppTheme.lightTheme,
+          darkTheme: AppTheme.darkTheme,
+          themeMode: themeProvider.themeMode,
+          home: const HomeScreen(),
+          routes: {
+            // Add test screen route
+            '/test': (context) => const TestScreen(),
+          },
+          // Add smooth scroll settings
+          scrollBehavior: const MaterialScrollBehavior().copyWith(
+            // Enable physical scrolling
+            physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics(),
+            ),
+            // Ensure all platforms have scrollbars and bounce effects
+            dragDevices: {
+              PointerDeviceKind.touch,
+              PointerDeviceKind.mouse,
+              PointerDeviceKind.stylus,
+              PointerDeviceKind.unknown,
+            },
+          ),
+        );
       },
-      // Add smooth scroll settings
-      scrollBehavior: const MaterialScrollBehavior().copyWith(
-        // Enable physical scrolling
-        physics: const BouncingScrollPhysics(
-          parent: AlwaysScrollableScrollPhysics(),
-        ),
-        // Ensure all platforms have scrollbars and bounce effects
-        dragDevices: {
-          PointerDeviceKind.touch,
-          PointerDeviceKind.mouse,
-          PointerDeviceKind.stylus,
-          PointerDeviceKind.unknown,
-        },
-      ),
     );
   }
 }

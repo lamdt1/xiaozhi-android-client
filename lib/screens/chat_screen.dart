@@ -641,10 +641,10 @@ class _ChatScreenState extends State<ChatScreen> {
           padding: const EdgeInsets.all(16),
           reverse: true,
           itemCount: messages.length + (_isLoading ? 1 : 0),
-          cacheExtent: 1000.0,
+          cacheExtent: 100.0,
           addRepaintBoundaries: true,
-          addAutomaticKeepAlives: true,
-          physics: const ClampingScrollPhysics(),
+          addAutomaticKeepAlives: false,
+          physics: const BouncingScrollPhysics(),
           itemBuilder: (context, index) {
             if (_isLoading && index == 0) {
               return MessageBubble(

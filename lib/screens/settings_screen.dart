@@ -28,6 +28,7 @@ class _SettingsScreenState extends State<SettingsScreen>
   final _newDifyNameController = TextEditingController();
   final _newDifyApiKeyController = TextEditingController();
   final _newDifyApiUrlController = TextEditingController();
+  final _appTitleController = TextEditingController();
 
   late TabController _tabController;
   int _currentTabIndex = 0;
@@ -39,6 +40,9 @@ class _SettingsScreenState extends State<SettingsScreen>
 
     // 保存Provider引用，以便在dispose中安全使用
     _configProvider = configProvider;
+
+    // 初始化App Title控制器
+    _appTitleController.text = _configProvider.appTitle;
 
     // 初始化选项卡控制器
     _tabController = TabController(length: 3, vsync: this);
@@ -65,6 +69,7 @@ class _SettingsScreenState extends State<SettingsScreen>
     _newDifyNameController.dispose();
     _newDifyApiKeyController.dispose();
     _newDifyApiUrlController.dispose();
+    _appTitleController.dispose();
 
     _tabController.dispose();
     super.dispose();
@@ -182,6 +187,76 @@ class _SettingsScreenState extends State<SettingsScreen>
               subtitle: '调整应用的外观设置',
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          '应用标题',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(color: Colors.grey.shade300),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.03),
+                                blurRadius: 4,
+                                spreadRadius: 0,
+                                offset: const Offset(0, 2),
+                              ),
+                            ],
+                          ),
+                          child: TextField(
+                            controller: _appTitleController,
+                            decoration: InputDecoration(
+                              hintText: '输入主页标题',
+                              hintStyle: TextStyle(color: Colors.grey.shade400),
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 14,
+                              ),
+                              border: InputBorder.none,
+                              suffixIcon: IconButton(
+                                icon: const Icon(Icons.check, color: Colors.green),
+                                onPressed: () async {
+                                  final newTitle = _appTitleController.text.trim();
+                                  if (newTitle.isNotEmpty) {
+                                    await Provider.of<ConfigProvider>(
+                                      context,
+                                      listen: false,
+                                    ).updateAppTitle(newTitle);
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      SnackBar(
+                                        content: Text('已更新标题为: $newTitle'),
+                                        backgroundColor: Colors.green.shade600,
+                                        behavior: SnackBarBehavior.floating,
+                                        margin: const EdgeInsets.all(16),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Divider(height: 1, indent: 16, endIndent: 16),
                   Consumer<ThemeProvider>(
                     builder: (context, themeProvider, child) {
                       return Padding(

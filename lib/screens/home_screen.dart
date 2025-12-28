@@ -45,13 +45,17 @@ class _HomeScreenState extends State<HomeScreen> {
             _selectedIndex == 1
                 ? null
                 : AppBar(
-                  title: const Text(
-                    '消息',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 28,
-                      color: Colors.black,
-                    ),
+                  title: Consumer<ConfigProvider>(
+                    builder: (context, configProvider, child) {
+                      return Text(
+                        configProvider.appTitle,
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 28,
+                          color: Colors.black,
+                        ),
+                      );
+                    },
                   ),
                   elevation: 0,
                   scrolledUnderElevation: 0,

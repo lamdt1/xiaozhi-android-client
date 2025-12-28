@@ -11,10 +11,12 @@ import 'package:ai_assistant/models/dify_config.dart';
 class ConfigProvider extends ChangeNotifier {
   List<XiaozhiConfig> _xiaozhiConfigs = [];
   List<DifyConfig> _difyConfigs = [];
+  String _appTitle = 'AI-LHHT';
   bool _isLoaded = false;
 
   List<XiaozhiConfig> get xiaozhiConfigs => _xiaozhiConfigs;
   List<DifyConfig> get difyConfigs => _difyConfigs;
+  String get appTitle => _appTitle;
   DifyConfig? get difyConfig =>
       _difyConfigs.isNotEmpty ? _difyConfigs.first : null;
   bool get isLoaded => _isLoaded;
@@ -25,6 +27,9 @@ class ConfigProvider extends ChangeNotifier {
 
   Future<void> _loadConfigs() async {
     final prefs = await SharedPreferences.getInstance();
+
+    // Load App Title
+    _appTitle = prefs.getString('appTitle') ?? 'AI-LHHT';
 
     // Load Xiaozhi configs
     final xiaozhiConfigsJson = prefs.getStringList('xiaozhiConfigs') ?? [];
@@ -69,6 +74,9 @@ class ConfigProvider extends ChangeNotifier {
     final xiaozhiConfigsJson =
         _xiaozhiConfigs.map((config) => jsonEncode(config.toJson())).toList();
     await prefs.setStringList('xiaozhiConfigs', xiaozhiConfigsJson);
+
+    // Save App Title
+    await prefs.setString('appTitle', _appTitle);
 
     // 保存多个Dify配置
     final difyConfigsJson =
@@ -143,6 +151,13 @@ class ConfigProvider extends ChangeNotifier {
   // 删除Dify配置
   Future<void> deleteDifyConfig(String id) async {
     _difyConfigs.removeWhere((config) => config.id == id);
+    await _saveConfigs();
+    notifyListeners();
+  }
+
+  // 更新应用标题
+  Future<void> updateAppTitle(String title) async {
+    _appTitle = title;
     await _saveConfigs();
     notifyListeners();
   }
